@@ -1,0 +1,24 @@
+<!--TABLE-->
+<div class="table-responsive" id="containerFields" data-th-fragment="alluser-entityModalConfirmBody" data-th-with="collectionLink=${@linkBuilder.of('AllusersCollectionThymeleafController')},itemLink=${@linkBuilder.of('AllusersItemThymeleafController')}">
+    <table id="alluser-entity-table-items-to-remove-batch" data-data-load-url="${collectionLink.to('datatablesByIdsIn')}">
+      <thead>
+        <tr>
+          <th data-data="loginId" data-th-text="#{label_alluser_loginid}">loginId</th>
+          <th data-data="passwordHash" data-th-text="#{label_alluser_passwordhash}">passwordHash</th>
+          <th data-data="email" data-th-text="#{label_alluser_email}">email</th>
+          <th data-data="appRole" data-th-text="#{label_alluser_approle}">appRole</th>
+          <th data-data="userActive" data-th-text="#{label_alluser_useractive}">userActive</th>
+        </tr>
+      </thead>
+      <tbody data-th-remove="all">
+        <tr>
+          <td>loginId</td>
+          <td>passwordHash</td>
+          <td>email</td>
+          <td>appRole</td>
+          <td>userActive</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<!-- /TABLE -->

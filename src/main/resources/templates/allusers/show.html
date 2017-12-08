@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+  <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_alluser})}|">Show Alluser - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content" data-th-object="${alluser}">
+        <div class="container-fluid content">
+
+          <!-- CONTENT -->
+          <h1 data-th-text="#{label_show_entity(#{label_alluser})}">Show Alluser</h1>
+
+            <div id="mainEntityFieldSet">
+              <h2 data-th-text="#{label_data_entity(#{label_alluser})}">Alluser data</h2>
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="alluser-loginid-field" data-z="f29da7dd">
+            	      <strong data-th-text="#{label_alluser_loginid}">loginId</strong>
+                    <span data-th-text="*{{loginId}}">loginIdValue</span>
+         	        </li>
+                  <li id="alluser-passwordhash-field" data-z="2f620241">
+            	      <strong data-th-text="#{label_alluser_passwordhash}">passwordHash</strong>
+                    <span data-th-text="*{{passwordHash}}">passwordHashValue</span>
+         	        </li>
+                  <li id="alluser-email-field" data-z="2b09483d">
+            	      <strong data-th-text="#{label_alluser_email}">email</strong>
+                    <span data-th-text="*{{email}}">emailValue</span>
+         	        </li>
+                  <li id="alluser-approle-field" data-z="7e98f17d">
+            	      <strong data-th-text="#{label_alluser_approle}">appRole</strong>
+                    <span data-th-text="*{{appRole}}">appRoleValue</span>
+         	        </li>
+                  <li id="alluser-useractive-field" data-z="3b225dc1">
+            	      <strong data-th-text="#{label_alluser_useractive}">userActive</strong>
+                    <span data-th-text="*{{userActive}}">userActiveValue</span>
+         	        </li>
+                  <li id="alluser-lastupdatedate-field" data-z="b2051961">
+            	      <strong data-th-text="#{label_alluser_lastupdatedate}">lastUpdateDate</strong>
+                    <span data-th-text="*{{lastUpdateDate}}">lastUpdateDateValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+
+          <div class="clearfix">
+            <div class="pull-right">
+             <a id="Alluser_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('AllusersItemThymeleafController').to('editForm').with('alluser', alluser.id)}" data-th-text="#{label_edit}">Edit</a>
+            </div>
+          </div>
+
+
+          <div class="clearfix">
+            <div class="pull-left">
+              <a id="Alluser_list" href="list.html" class="btn btn-default" data-th-title="#{label_goBack}" data-th-href="${@linkBuilder.of('AllusersCollectionThymeleafController').to('list')}">
+  	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	             <span data-th-text="#{label_back}">Back</span>
+  	          </a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>
