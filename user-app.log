@@ -617,3 +617,339 @@ order by alluser.loginId asc, alluser.id asc nulls first, time: 3ms, rows: 10
     0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
     0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
 }
+2017-12-09 11:20:16.302  INFO - QP: - 40892 --- [restartedMain] com.all.management.user.UserApplication  : Starting UserApplication on HOF-LIG with PID 40892 (D:\spring-roo-2.0.0.RC2\user-management\target\classes started by lig in D:\spring-roo-2.0.0.RC2\user-management)
+2017-12-09 11:20:16.317 DEBUG - QP: - 40892 --- [restartedMain] com.all.management.user.UserApplication  : Running with Spring Boot v1.4.1.RELEASE, Spring v4.3.3.RELEASE
+2017-12-09 11:20:16.317  INFO - QP: - 40892 --- [restartedMain] com.all.management.user.UserApplication  : The following profiles are active: dev
+2017-12-09 11:20:16.515  INFO - QP: - 40892 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b4def4: startup date [Sat Dec 09 11:20:16 CST 2017]; root of context hierarchy
+2017-12-09 11:20:18.671  INFO - QP: - 40892 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-12-09 11:20:18.772  INFO - QP: - 40892 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$37c50052] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-09 11:20:18.826  INFO - QP: - 40892 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [class org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$d072c88c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-09 11:20:18.835  INFO - QP: - 40892 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [class org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-09 11:20:18.837  INFO - QP: - 40892 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1f0cbce5' of type [class org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-09 11:20:18.843  INFO - QP: - 40892 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [class org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$f5476b3e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-09 11:20:18.843  INFO - QP: - 40892 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [class org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-09 11:20:19.540  INFO - QP: - 40892 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-12-09 11:20:19.572  INFO - QP: - 40892 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-12-09 11:20:19.572  INFO - QP: - 40892 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.5
+2017-12-09 11:20:19.699  INFO - QP: - 40892 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/user]   : Initializing Spring embedded WebApplicationContext
+2017-12-09 11:20:19.699  INFO - QP: - 40892 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3184 ms
+2017-12-09 11:20:20.005  INFO - QP: - 40892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-09 11:20:20.006  INFO - QP: - 40892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-12-09 11:20:20.007  INFO - QP: - 40892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-12-09 11:20:20.007  INFO - QP: - 40892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-12-09 11:20:20.010  INFO - QP: - 40892 --- [localhost-startStop-1] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2017-12-09 11:20:20.011  INFO - QP: - 40892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'registerMDCUserNameFilter' to: [/*]
+2017-12-09 11:20:20.011  INFO - QP: - 40892 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'resourceUrlEncodingFilter' to: [/*]
+2017-12-09 11:20:20.011  INFO - QP: - 40892 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-09 11:20:21.196  INFO - QP: - 40892 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-12-09 11:20:21.213  INFO - QP: - 40892 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-12-09 11:20:21.297  INFO - QP: - 40892 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.11.Final}
+2017-12-09 11:20:21.297  INFO - QP: - 40892 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-12-09 11:20:21.297  INFO - QP: - 40892 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-12-09 11:20:21.351  INFO - QP: - 40892 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-12-09 11:20:21.499  INFO - QP: - 40892 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL94Dialect
+2017-12-09 11:20:21.608  INFO - QP: - 40892 --- [restartedMain] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-12-09 11:20:21.610  INFO - QP: - 40892 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@1e07cfd9
+2017-12-09 11:20:21.779  WARN - QP: - 40892 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2017-12-09 11:20:21.794  WARN - QP: - 40892 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2017-12-09 11:20:21.794  WARN - QP: - 40892 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2017-12-09 11:20:21.794  WARN - QP: - 40892 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000014: Found use of deprecated [org.hibernate.id.SequenceHiLoGenerator] sequence-based id generator; use org.hibernate.id.enhanced.SequenceStyleGenerator instead.  See Hibernate Domain Model Mapping Guide for details.
+2017-12-09 11:20:22.091  INFO - QP: - 40892 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-12-09 11:20:22.584 DEBUG - QP: - 40892 --- [restartedMain] o.h.stat.internal.StatisticsInitiator    : Statistics initialized [enabled=true]
+2017-12-09 11:20:22.586  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:22.586  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:22.687  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:22.702  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:22.718  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:22.749  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.173  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.183  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.186  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.187  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.190  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.193  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.224  INFO - QP: - 40892 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-12-09 11:20:23.327  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.343  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.343  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.343  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.358  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.387  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.388  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:23.413  INFO - QP: - 40892 --- [restartedMain] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2017-12-09 11:20:24.102  INFO - QP: - 40892 --- [restartedMain] SecurityInMemoryAuthenticationConfigurer : 
+
+Default security users [USERNAME : PASSWORD : ROLES]:
+
+  [user  : 9f0f6d46-ea57-47c5-b280-363b4e022b41 : ROLE_USER]
+
+  [admin : 5edf53c1-6218-471a-bf1e-afef5d57d802 : ROLE_USER, ROLE_ADMIN]
+
+2017-12-09 11:20:24.214  INFO - QP: - 40892 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20c20142, org.springframework.security.web.context.SecurityContextPersistenceFilter@17790c15, org.springframework.security.web.header.HeaderWriterFilter@29497df3, org.springframework.security.web.authentication.logout.LogoutFilter@292b0e9a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@20ab0abb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@15af28e7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ba24add, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3edc7160, org.springframework.security.web.session.SessionManagementFilter@620f193b, org.springframework.security.web.access.ExceptionTranslationFilter@2c5388f7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7c14464f]
+2017-12-09 11:20:24.250  INFO - QP: - 40892 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5bd84c13, org.springframework.security.web.context.SecurityContextPersistenceFilter@4d45471e, org.springframework.security.web.header.HeaderWriterFilter@32816437, org.springframework.security.web.csrf.CsrfFilter@5d7bc5f0, org.springframework.security.web.authentication.logout.LogoutFilter@76de6d39, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2bb7025e, org.springframework.security.web.session.ConcurrentSessionFilter@19602ca9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2dd7c308, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e023aed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@60ead1f3, org.springframework.security.web.session.SessionManagementFilter@31d673d2, org.springframework.security.web.access.ExceptionTranslationFilter@44882edb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@c78f54f]
+2017-12-09 11:20:24.404  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b4def4: startup date [Sat Dec 09 11:20:16 CST 2017]; root of context hierarchy
+2017-12-09 11:20:24.413  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected @InitBinder methods in stringTrimmerAdvice
+2017-12-09 11:20:24.415  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in jsonpAdvice
+2017-12-09 11:20:24.416  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected @InitBinder methods in validatorAdvice
+2017-12-09 11:20:24.523  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersCollectionJsonController.create(com.all.management.user.model.Alluser,org.springframework.validation.BindingResult)
+2017-12-09 11:20:24.525  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers],methods=[GET],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<org.springframework.data.domain.Page<com.all.management.user.model.Alluser>> com.all.management.user.web.AllusersCollectionJsonController.list(io.springlets.data.domain.GlobalSearch,org.springframework.data.domain.Pageable)
+2017-12-09 11:20:24.526  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/batch],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersCollectionJsonController.createBatch(java.util.Collection<com.all.management.user.model.Alluser>,org.springframework.validation.BindingResult)
+2017-12-09 11:20:24.526  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/batch],methods=[PUT],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersCollectionJsonController.updateBatch(java.util.Collection<com.all.management.user.model.Alluser>,org.springframework.validation.BindingResult)
+2017-12-09 11:20:24.527  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/batch/{ids}],methods=[DELETE],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersCollectionJsonController.deleteBatch(java.util.Collection<java.lang.Long>)
+2017-12-09 11:20:24.530  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers],methods=[POST],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.all.management.user.web.AllusersCollectionThymeleafController.create(com.all.management.user.model.Alluser,org.springframework.validation.BindingResult,org.springframework.ui.Model)
+2017-12-09 11:20:24.531  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers],methods=[GET],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.all.management.user.web.AllusersCollectionThymeleafController.list(org.springframework.ui.Model)
+2017-12-09 11:20:24.532  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/dtByIdsIn],methods=[GET],produces=[application/vnd.datatables+json]}" onto public org.springframework.http.ResponseEntity<io.springlets.data.web.datatables.ConvertedDatatablesData<com.all.management.user.model.Alluser>> com.all.management.user.web.AllusersCollectionThymeleafController.datatablesByIdsIn(java.util.List<java.lang.Long>,io.springlets.data.web.datatables.DatatablesColumns,io.springlets.data.domain.GlobalSearch,io.springlets.data.web.datatables.DatatablesPageable,java.lang.Integer)
+2017-12-09 11:20:24.532  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/export/csv],methods=[GET],produces=[text/html]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersCollectionThymeleafController.exportCsv(io.springlets.data.domain.GlobalSearch,org.springframework.data.domain.Pageable,java.lang.String[],javax.servlet.http.HttpServletResponse,java.util.Locale)
+2017-12-09 11:20:24.533  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/export/pdf],methods=[GET],produces=[text/html]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersCollectionThymeleafController.exportPdf(io.springlets.data.domain.GlobalSearch,org.springframework.data.domain.Pageable,java.lang.String[],javax.servlet.http.HttpServletResponse,java.util.Locale)
+2017-12-09 11:20:24.533  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/export/xls],methods=[GET],produces=[text/html]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersCollectionThymeleafController.exportXls(io.springlets.data.domain.GlobalSearch,org.springframework.data.domain.Pageable,java.lang.String[],javax.servlet.http.HttpServletResponse,java.util.Locale)
+2017-12-09 11:20:24.534  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/batch/{ids}],methods=[DELETE],produces=[text/html]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersCollectionThymeleafController.deleteBatch(java.util.Collection<java.lang.Long>)
+2017-12-09 11:20:24.534  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/dt],methods=[GET],produces=[application/vnd.datatables+json]}" onto public org.springframework.http.ResponseEntity<io.springlets.data.web.datatables.ConvertedDatatablesData<com.all.management.user.model.Alluser>> com.all.management.user.web.AllusersCollectionThymeleafController.datatables(io.springlets.data.web.datatables.DatatablesColumns,io.springlets.data.domain.GlobalSearch,io.springlets.data.web.datatables.DatatablesPageable,java.lang.Integer)
+2017-12-09 11:20:24.535  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/s2],methods=[GET],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<io.springlets.data.web.select2.Select2DataSupport<com.all.management.user.model.Alluser>> com.all.management.user.web.AllusersCollectionThymeleafController.select2(io.springlets.data.domain.GlobalSearch,org.springframework.data.domain.Pageable,java.util.Locale)
+2017-12-09 11:20:24.536  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/create-form],methods=[GET],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.all.management.user.web.AllusersCollectionThymeleafController.createForm(org.springframework.ui.Model)
+2017-12-09 11:20:24.538  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/{alluser}],methods=[PUT],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersItemJsonController.update(com.all.management.user.model.Alluser,com.all.management.user.model.Alluser,org.springframework.validation.BindingResult)
+2017-12-09 11:20:24.538  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/{alluser}],methods=[DELETE],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersItemJsonController.delete(com.all.management.user.model.Alluser)
+2017-12-09 11:20:24.540  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/{alluser}],methods=[GET],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersItemJsonController.show(com.all.management.user.model.Alluser)
+2017-12-09 11:20:24.542  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/{alluser}],methods=[PUT],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.all.management.user.web.AllusersItemThymeleafController.update(com.all.management.user.model.Alluser,org.springframework.validation.BindingResult,java.lang.Integer,java.lang.String,org.springframework.ui.Model)
+2017-12-09 11:20:24.544  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/{alluser}],methods=[DELETE],produces=[text/html]}" onto public org.springframework.http.ResponseEntity<?> com.all.management.user.web.AllusersItemThymeleafController.delete(com.all.management.user.model.Alluser)
+2017-12-09 11:20:24.545  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/{alluser}/edit-form],methods=[GET],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.all.management.user.web.AllusersItemThymeleafController.editForm(com.all.management.user.model.Alluser,org.springframework.ui.Model)
+2017-12-09 11:20:24.548  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/{alluser}/inline],methods=[GET],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.all.management.user.web.AllusersItemThymeleafController.showInline(com.all.management.user.model.Alluser,org.springframework.ui.Model)
+2017-12-09 11:20:24.549  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/allusers/{alluser}],methods=[GET],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView com.all.management.user.web.AllusersItemThymeleafController.show(com.all.management.user.model.Alluser,org.springframework.ui.Model)
+2017-12-09 11:20:24.552  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.all.management.user.web.MainController.index(org.springframework.ui.Model)
+2017-12-09 11:20:24.552  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],methods=[GET]}" onto public java.lang.String com.all.management.user.web.MainController.error(org.springframework.ui.Model)
+2017-12-09 11:20:24.552  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/js/{template}.js],methods=[GET]}" onto public java.lang.String com.all.management.user.web.MainController.javascriptTemplates(java.lang.String)
+2017-12-09 11:20:24.552  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index],methods=[GET]}" onto public java.lang.String com.all.management.user.web.MainController.backIndex(org.springframework.ui.Model)
+2017-12-09 11:20:24.552  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/accessibility],methods=[GET]}" onto public java.lang.String com.all.management.user.web.MainController.accessibility(org.springframework.ui.Model)
+2017-12-09 11:20:24.552  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public java.lang.String com.all.management.user.web.MainController.login(org.springframework.ui.Model)
+2017-12-09 11:20:24.552  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-12-09 11:20:24.552  INFO - QP: - 40892 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-12-09 11:20:24.583  INFO - QP: - 40892 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/login] onto handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-12-09 11:20:24.962  INFO - QP: - 40892 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-09 11:20:24.962  INFO - QP: - 40892 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-09 11:20:25.043  INFO - QP: - 40892 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in jsonpAdvice
+2017-12-09 11:20:25.115  INFO - QP: - 40892 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-09 11:20:25.568  INFO - QP: - 40892 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-12-09 11:20:25.623  INFO - QP: - 40892 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-12-09 11:20:25.686  INFO - QP: - 40892 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-12-09 11:20:25.686  INFO - QP: - 40892 --- [restartedMain] com.all.management.user.UserApplication  : Started UserApplication in 9.85 seconds (JVM running for 10.477)
