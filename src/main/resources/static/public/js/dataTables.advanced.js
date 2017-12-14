@@ -439,6 +439,9 @@
         var rowIds = $('#' + tableId + 'DeleteBatchRowId').data('row-id');
 
         var url = getDeleteBatchUrl(datatables, rowIds);
+        
+console.log('token is = ' + $token.length);
+console.log('header is = ' + $header.length);
 
         $.ajax({
                 url: url,

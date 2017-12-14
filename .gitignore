@@ -10,6 +10,7 @@ target/
 .springBeans
 log.roo
 user.roo
+output.txt
 
 ### IntelliJ IDEA ###
 .idea

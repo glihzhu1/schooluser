@@ -52,10 +52,10 @@
               </table>
                 <!-- content replaced by modal-confirm fragment of modal-confirm.html -->
                 <div data-th-replace="~{fragments/modal-confirm-delete :: modalConfirmDelete(tableId='alluser-entity-table',
-                    title=#{label_delete_entity(#{label_alluser_plural})}, message=#{info_delete_item_confirm}, content=~{/allusers/listDeleteModal :: alluser-entityModalConfirmBody})}">
+                    title=#{label_delete_entity(#{label_alluser_plural})}, message=#{info_delete_item_confirm}, content=~{allusers/listDeleteModal :: alluser-entityModalConfirmBody})}">
                 </div>
                 <div data-th-replace="~{fragments/modal-confirm-delete-batch :: modalConfirmDeleteBatch(tableId='alluser-entity-table',
-                    title=#{label_delete_entity(#{label_alluser_plural})}, message=#{info_delete_batch_confirm}, content=~{/allusers/listDeleteModalBatch :: alluser-entityModalConfirmBody})}">
+                    title=#{label_delete_entity(#{label_alluser_plural})}, message=#{info_delete_batch_confirm}, content=~{allusers/listDeleteModalBatch :: alluser-entityModalConfirmBody})}">
                 </div>
               <div data-th-replace="~{fragments/modal-export-empty-error :: modalExportEmptyError(tableId='alluser-entity-table',
                   title=#{label_export_empty_error(#{label_alluser_plural})}, message=#{info_export_empty_error})}">
