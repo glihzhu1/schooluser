@@ -491,36 +491,41 @@
             <groupId>org.webjars.bower</groupId>
             <artifactId>ie10-viewport-bug-workaround</artifactId>
         </dependency>
-    <dependency>
+    	<dependency>
             <groupId>io.springlets</groupId>
             <artifactId>springlets-boot-starter-authentication</artifactId>
         </dependency>
-    <dependency>
+    	<dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
         </dependency>
-    <dependency>
+    	<dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
         </dependency>
-    <dependency>
+    	<dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-    <dependency>
+    	<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
-    <dependency>
+    	<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
             <scope>test</scope>
         </dependency>
-    <dependency>
+    	<dependency>
             <groupId>io.springlets</groupId>
             <artifactId>springlets-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.flexjson</groupId>
+            <artifactId>flexjson</artifactId>
+            <version>2.1</version>
         </dependency>
     </dependencies>
 

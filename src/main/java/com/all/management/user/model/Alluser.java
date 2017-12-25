@@ -4,6 +4,9 @@ import org.springframework.roo.addon.javabean.annotations.RooJavaBean;
 import org.springframework.roo.addon.javabean.annotations.RooSerializable;
 import org.springframework.roo.addon.javabean.annotations.RooToString;
 import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
+
+import com.all.management.user.util.AlluserTransformer;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +22,10 @@ import java.util.Objects;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import flexjson.JSONDeserializer;
+import flexjson.JSONSerializer;
+
 
 @Entity
 @EntityFormat
@@ -329,4 +336,14 @@ public class Alluser implements Serializable {
      * 
      */
     public static final String ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE = "The given Iterable of items to add can't be null!";
+
+    public static Alluser fromJsonToAlluser(String json) {
+        return new JSONDeserializer<Alluser>()
+        		.use(null, Alluser.class).deserialize(json);
+    }
+    
+    public String toJson() {
+        return new JSONSerializer().exclude("*.class")
+        .transform(new AlluserTransformer(), Alluser.class).serialize(this);
+    }
 }

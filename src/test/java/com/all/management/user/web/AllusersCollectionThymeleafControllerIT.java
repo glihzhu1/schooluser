@@ -1,14 +1,38 @@
 package com.all.management.user.web;
+import com.all.management.user.model.dod.AlluserDataOnDemand;
 import com.all.management.user.model.dod.AlluserFactory;
 import com.all.management.user.service.api.AlluserService;
 import io.springlets.boot.test.autoconfigure.web.servlet.SpringletsWebMvcTest;
+//import io.springlets.data.domain.GlobalSearch;
+import io.springlets.data.jpa.repository.support.QueryDslRepositorySupportExt;
+
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.test.RooThymeleafControllerIntegrationTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.*;
+
+import java.util.Iterator;
 
 @RunWith(SpringRunner.class)
 @SpringletsWebMvcTest(controllers = AllusersCollectionThymeleafController.class,secure = false)
@@ -85,6 +109,52 @@ public class AllusersCollectionThymeleafControllerIT {
         this.factory = factory;
     }
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Mock
+    private Pageable pageable;
+
+    //@Mock
+    //private GlobalSearch search;
+    
+    @Mock
+    private Sort sort;
+
+    @Mock
+    private Iterator<Sort.Order> iterator;
+
+    private QueryDslRepositorySupportExt<Object> support;
+    
+    //@Autowired
+	//AlluserDataOnDemand dod;
+    
+    public Pageable getPageable() {
+		return pageable;
+	}
+
+	public void setPageable(Pageable pageable) {
+		this.pageable = pageable;
+	}
+
+	/*public GlobalSearch getSearch() {
+		return search;
+	}
+
+	public void setSearch(GlobalSearch search) {
+		this.search = search;
+	}*/
+
+	@Before
+    public void setUp() {
+		//dod.init();
+    	mvc = MockMvcBuilders.standaloneSetup(new AllusersCollectionThymeleafController()).build();
+    	//pageable = Mockito.mock(Pageable.class);
+    	//search = new GlobalSearch("a", false);
+    	//search = Mockito.mock(GlobalSearch.class);
+    	
+    }
+    
 	/**
      * Test method example. To be implemented by developer.
      * 
@@ -100,4 +170,15 @@ public class AllusersCollectionThymeleafControllerIT {
         // Verify
         // Check results with assertions
     }
+    
+   /* @Test
+    public void testListProducts() throws Exception {
+    	assertThat(this.alluserServiceService).isNotNull();
+    	
+    	MvcResult result= this.mvc.perform(get("/allusers"))
+    		.andExpect(status().isOk()).andReturn();
+    	
+    	MockHttpServletResponse mockResponse=result.getResponse();
+        assertThat(mockResponse.getContentType()).isEqualTo("text/html;charset=UTF-8");
+    }*/
 }

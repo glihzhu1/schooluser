@@ -29,6 +29,7 @@ public class MySecurityConfigurer extends WebSecurityConfigurerAdapter {
 		builder.inMemoryAuthentication()
 			.withUser("guolong").password("guolong").roles("ADMIN");
 		
+		
     	builder.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
     	//builder.userDetailsService(userDetailsService);
     }
@@ -44,12 +45,9 @@ public class MySecurityConfigurer extends WebSecurityConfigurerAdapter {
 			.antMatchers("/", "/login", "/resources/static/**", "/webjars/**", "/public/**", "/about").permitAll()
 			.anyRequest().authenticated()
 			.and()
-				//.formLogin();
-			//.anyRequest().permitAll()
-			//.and()
-				.formLogin().loginPage("/login").permitAll()
-				//.usernameParameter("username").passwordParameter("password")
-				.failureUrl("/error")
+				//.formLogin().loginPage("/login").permitAll()
+				.httpBasic()
+				//.failureUrl("/error")
 			.and()
 				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/index").deleteCookies("JSESSIONID")

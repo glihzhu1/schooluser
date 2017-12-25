@@ -72,6 +72,10 @@ import org.springframework.web.util.UriComponents;
 @RooThymeleaf
 public class AllusersCollectionThymeleafController {
 
+	public AllusersCollectionThymeleafController() {
+		super();
+	}
+
 	/**
      * TODO Auto-generated attribute documentation
      * 
