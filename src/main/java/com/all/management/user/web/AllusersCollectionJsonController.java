@@ -44,6 +44,8 @@ import org.springframework.web.util.UriComponents;
 @RooController(entity = Alluser.class, type = ControllerType.COLLECTION)
 @RooJSON
 public class AllusersCollectionJsonController {
+	//@Autowired
+	//private PasswordEncoder passwordEncoder;
 
 	private AlluserRepository alluserRepository;
 	
@@ -186,6 +188,31 @@ public class AllusersCollectionJsonController {
         return ResponseEntity.ok().build();
     }
     
+   //Below is called by the school app
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+    public ResponseEntity<String> updateFromJson(@RequestBody String json, @PathVariable("id") Integer id) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        try {
+            Alluser alluser = Alluser.fromJsonToAlluser(json);
+            
+            Alluser alluserupdate= alluserRepository.findOne(alluser.getId());
+            if(alluserupdate != null) {
+	            alluserupdate.setLoginId(alluser.getLoginId());
+	            alluserupdate.setEmail(alluser.getEmail());
+	            alluserupdate.setLastUpdateDate(GregorianCalendar.getInstance());
+	            if (alluserRepository.save(alluserupdate) == null) {
+	                return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+	            }
+            }
+            else
+            	return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<String>(headers, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
     @RequestMapping(value = "/pwd/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<String> updatePwdFromJson(@RequestBody String json, @PathVariable("id") Integer id) {
         HttpHeaders headers = new HttpHeaders();
@@ -195,7 +222,10 @@ public class AllusersCollectionJsonController {
             
             Alluser alluserupdate= getAlluserService().findOne(alluser.getId());
             if(alluserupdate != null) {
-	            alluserupdate.setPasswordHash(alluser.getPasswordHash());
+            	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                String encodedPassword = passwordEncoder.encode(alluser.getPasswordHash());
+                alluserupdate.setPasswordHash(encodedPassword);
+            	//alluserupdate.setPasswordHash(alluser.getPasswordHash());
 	            alluserupdate.setLastUpdateDate(GregorianCalendar.getInstance());
 	            if (getAlluserService().save(alluserupdate) == null) {
 	                return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
@@ -229,6 +259,35 @@ public class AllusersCollectionJsonController {
         }
     }
 
+    @RequestMapping(value = "/json/create", method = RequestMethod.POST, headers = "Accept=application/json")
+    public ResponseEntity<String> createAndFetchUserJson(@RequestBody String json) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        try {
+        	Alluser alluser = Alluser.fromJsonToAlluser(json);
+            
+        	List<Alluser> result = 
+        			alluserRepository.findByLoginIdOrEmailIgnoreCase(alluser.getLoginId(), alluser.getEmail());
+            if (result == null || result.isEmpty()) {
+            	alluser.setLastUpdateDate(GregorianCalendar.getInstance());
+            	alluser = alluserRepository.save(alluser);
+            	return new ResponseEntity<String>(alluser.toJson(), headers, HttpStatus.CREATED);
+            }
+            else if (result.size() == 1){
+            	// The loginId or email has been used
+            	return new ResponseEntity<String>(result.get(0).toJson(), headers, HttpStatus.FOUND);
+            }
+            else {
+            	// too many duplicated users
+            	return new ResponseEntity<String>(headers, HttpStatus.MULTI_STATUS);
+            }
+        } catch (Exception e) {
+        	e.printStackTrace();
+        	
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
 	public AlluserRepository getAlluserRepository() {
 		return alluserRepository;
 	}

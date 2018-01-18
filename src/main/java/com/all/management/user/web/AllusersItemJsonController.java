@@ -1,9 +1,14 @@
 package com.all.management.user.web;
 import com.all.management.user.model.Alluser;
+import com.all.management.user.repository.AlluserRepository;
 import com.all.management.user.service.api.AlluserService;
 import io.springlets.web.NotFoundException;
+
+import java.util.GregorianCalendar;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
@@ -31,10 +37,12 @@ import org.springframework.web.util.UriComponents;
  TODO Auto-generated class documentation
  *
  */
-@RooController(entity = Alluser.class, type = ControllerType.ITEM)
-@RooJSON
+//@RooController(entity = Alluser.class, type = ControllerType.ITEM)
+//@RooJSON
 public class AllusersItemJsonController {
 
+	private AlluserRepository alluserRepository;
+	
 	/**
      * TODO Auto-generated attribute documentation
      * 
@@ -59,14 +67,23 @@ public class AllusersItemJsonController {
         this.alluserService = alluserService;
     }
 
+	public AlluserRepository getAlluserRepository() {
+		return alluserRepository;
+	}
+
+	public void setAlluserRepository(AlluserRepository alluserRepository) {
+		this.alluserRepository = alluserRepository;
+	}
+
 	/**
      * TODO Auto-generated constructor documentation
      * 
      * @param alluserService
      */
     @Autowired
-    public AllusersItemJsonController(AlluserService alluserService) {
+    public AllusersItemJsonController(AlluserService alluserService, AlluserRepository alluserRepository) {
         this.alluserService = alluserService;
+        this.alluserRepository = alluserRepository;
     }
 
 	/**
@@ -129,7 +146,7 @@ public class AllusersItemJsonController {
         getAlluserService().save(alluser);
         return ResponseEntity.ok().build();
     }
-
+    
 	/**
      * TODO Auto-generated method documentation
      * 

@@ -51,6 +51,7 @@ public class AllusersCollectionThymeleafLinkFactory implements MethodLinkFactory
      */
     public static final String CREATEFORM = "createForm";
 
+    public static final String PROFILE = "profile";
 	/**
      * TODO Auto-generated attribute documentation
      * 
@@ -110,6 +111,9 @@ public class AllusersCollectionThymeleafLinkFactory implements MethodLinkFactory
         }
         if (methodName.equals(CREATEFORM)) {
             return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).createForm(null)).buildAndExpand(pathVariables);
+        }
+        if (methodName.equals(PROFILE)) {
+            return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).showProfile(null, null)).buildAndExpand(pathVariables);
         }
         if (methodName.equals(DELETEBATCH)) {
             return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).deleteBatch(null)).buildAndExpand(pathVariables);

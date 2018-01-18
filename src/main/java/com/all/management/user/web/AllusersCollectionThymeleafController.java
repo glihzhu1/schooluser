@@ -4,6 +4,7 @@ import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
 import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
 import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
 import com.all.management.user.model.Alluser;
+import com.all.management.user.repository.AlluserRepository;
 import com.all.management.user.service.api.AlluserService;
 import com.all.management.user.web.reports.ExportingErrorException;
 import com.all.management.user.web.reports.JasperReportsCsvExporter;
@@ -43,6 +44,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
 import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
 import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleaf;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -99,6 +102,9 @@ public class AllusersCollectionThymeleafController {
      * 
      */
     private ConversionService conversionService;
+    
+    @Autowired
+	private AlluserRepository alluserRepository;
 
 	/**
      * TODO Auto-generated constructor documentation
@@ -560,4 +566,32 @@ public class AllusersCollectionThymeleafController {
     public void setAlluserService(AlluserService alluserService) {
         this.alluserService = alluserService;
     }
+    
+    @ModelAttribute
+    public Alluser getLoginuser() {
+        Alluser loginuser = null;
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String loginName = auth.getName(); //get logged in username
+
+        
+        loginuser = alluserRepository.findByLoginId(loginName);
+        
+        return loginuser;
+    }
+    
+    @GetMapping(value = "/profile", name = "profile")
+    public ModelAndView showProfile(@ModelAttribute Alluser loginuser, Model model) {
+    	populateForm(model);
+    	
+    	if(loginuser != null) {
+    		model.addAttribute("loginuser", loginuser);
+    		return new ModelAndView("allusers/profile");
+    	}
+    	else {
+    		//go to an error page
+    		return new ModelAndView("error");
+    	}
+    }
+    
 }

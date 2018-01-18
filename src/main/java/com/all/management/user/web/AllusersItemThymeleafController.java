@@ -1,6 +1,7 @@
 package com.all.management.user.web;
 
 import com.all.management.user.model.Alluser;
+import com.all.management.user.repository.AlluserRepository;
 import com.all.management.user.service.api.AlluserService;
 import io.springlets.web.NotFoundException;
 import io.springlets.web.mvc.util.ControllerMethodLinkBuilderFactory;
@@ -17,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
 import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
 import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleaf;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -46,6 +49,9 @@ import org.springframework.web.util.UriComponents;
 @RooThymeleaf
 public class AllusersItemThymeleafController {
 
+	@Autowired
+	private AlluserRepository alluserRepository;
+	
 	/**
      * TODO Auto-generated attribute documentation
      * 
@@ -100,6 +106,8 @@ public class AllusersItemThymeleafController {
         setAlluserService(alluserService);
         setMessageSource(messageSource);
         setItemLink(linkBuilder.of(AllusersItemThymeleafController.class));
+        //MethodLinkBuilderFactory<AllusersCollectionThymeleafController> colLink = linkBuilder.of(AllusersCollectionThymeleafController.class);
+        //setCollectionLink(colLink);
         setCollectionLink(linkBuilder.of(AllusersCollectionThymeleafController.class));
     }
 
@@ -305,4 +313,5 @@ public class AllusersItemThymeleafController {
         getAlluserService().delete(alluser);
         return ResponseEntity.ok().build();
     }
+    
 }

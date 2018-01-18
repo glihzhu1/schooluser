@@ -19,14 +19,13 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li>
-             <form data-th-action="@{/logout}" action="/logout" method="post">
-               <button type="submit" class="btn btn-link">
-                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                <span data-th-text="#{label_logout}">Log out</span>
-               </button>
-             </form>
+           <li data-sec-authorize="isAuthenticated()">
+             <a href="/allusers/profile" data-th-href="@{/allusers/profile}">
+                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                <span data-th-text="#{label_profile}">My Profile</span>
+               </a>
            </li>
+                 
          </ul>
         </li>
     </ul>
