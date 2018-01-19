@@ -567,7 +567,7 @@ public class AllusersCollectionThymeleafController {
         this.alluserService = alluserService;
     }
     
-    @ModelAttribute
+    /*@ModelAttribute
     public Alluser getLoginuser() {
         Alluser loginuser = null;
         
@@ -578,12 +578,19 @@ public class AllusersCollectionThymeleafController {
         loginuser = alluserRepository.findByLoginId(loginName);
         
         return loginuser;
-    }
+    }*/
     
     @GetMapping(value = "/profile", name = "profile")
-    public ModelAndView showProfile(@ModelAttribute Alluser loginuser, Model model) {
+    public ModelAndView showProfile(Model model) {
     	populateForm(model);
     	
+    	Alluser loginuser = null;
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String loginName = auth.getName(); //get logged in username
+
+        
+        loginuser = alluserRepository.findByLoginId(loginName);
     	if(loginuser != null) {
     		model.addAttribute("loginuser", loginuser);
     		return new ModelAndView("allusers/profile");

@@ -270,6 +270,9 @@ public class AllusersCollectionJsonController {
         			alluserRepository.findByLoginIdOrEmailIgnoreCase(alluser.getLoginId(), alluser.getEmail());
             if (result == null || result.isEmpty()) {
             	alluser.setLastUpdateDate(GregorianCalendar.getInstance());
+            	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                String encodedPassword = passwordEncoder.encode(alluser.getPasswordHash());
+                alluser.setPasswordHash(encodedPassword);
             	alluser = alluserRepository.save(alluser);
             	return new ResponseEntity<String>(alluser.toJson(), headers, HttpStatus.CREATED);
             }

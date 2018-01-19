@@ -113,7 +113,7 @@ public class AllusersCollectionThymeleafLinkFactory implements MethodLinkFactory
             return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).createForm(null)).buildAndExpand(pathVariables);
         }
         if (methodName.equals(PROFILE)) {
-            return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).showProfile(null, null)).buildAndExpand(pathVariables);
+            return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).showProfile(null)).buildAndExpand(pathVariables);
         }
         if (methodName.equals(DELETEBATCH)) {
             return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).deleteBatch(null)).buildAndExpand(pathVariables);
