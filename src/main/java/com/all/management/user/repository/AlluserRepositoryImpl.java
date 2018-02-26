@@ -3,6 +3,8 @@ package com.all.management.user.repository;
 import io.springlets.data.domain.GlobalSearch;
 import io.springlets.data.jpa.repository.support.QueryDslRepositorySupportExt;
 import io.springlets.data.jpa.repository.support.QueryDslRepositorySupportExt.AttributeMappingBuilder;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -129,4 +131,5 @@ public class AlluserRepositoryImpl extends QueryDslRepositorySupportExt<Alluser>
         
         return loadPage(query, pageable, alluser);
     }
+    
 }

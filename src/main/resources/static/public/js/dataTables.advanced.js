@@ -967,6 +967,12 @@ console.log('header is = ' + $header.length);
         return processUrl(datatables, url, id);
     }
 
+    /* Added to Change password */
+    function getChgpwdUrl(datatables, id) {
+        var url = getDataValue(datatables, 'chgpwd-url');
+        return processUrl(datatables, url, id);
+    }
+    
     /**
      * Returns the URL to remove an element of the Datatables.
      * The value is defined in the Datatables table tag with a
@@ -1322,6 +1328,12 @@ console.log('header is = ' + $header.length);
                 .concat(editUrl).concat('"><span class="glyphicon glyphicon-pencil"></span></a>');
         }
 
+        var chgpwdUrl = getChgpwdUrl(datatables, rowId);
+        if (chgpwdUrl) {
+            buttons = buttons.concat('<a class="btn btn-action btn-sm" href="')
+                .concat(chgpwdUrl).concat('"><span class="glyphicon glyphicon-lock"></span></a>');
+        }
+        
         var deleteUrl = getDeleteUrl(datatables, rowId);
         if (deleteUrl) {
             buttons = buttons.concat('<a role="button" class="btn btn-action btn-sm" data-toggle="modal" data-target="#')
@@ -1379,7 +1391,8 @@ console.log('header is = ' + $header.length);
 
     apiRegister('advanced.getTableId()', getTableId);
     apiRegister('advanced.getCreateUrl()', getCreateUrl);
-    apiRegister('advanced.getEditUrl()', getEditUrl)
+    apiRegister('advanced.getEditUrl()', getEditUrl);
+    apiRegister('advanced.getChgpwdUrl()', getChgpwdUrl);
     apiRegister('advanced.getDeleteUrl()', getDeleteUrl);
     apiRegister('advanced.getDeleteBatchUrl()', getDeleteBatchUrl);
     apiRegister('advanced.getShowUrl()', getShowUrl);

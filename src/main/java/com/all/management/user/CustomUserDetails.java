@@ -13,10 +13,23 @@ import com.all.management.user.model.Alluser;
 public class CustomUserDetails extends com.all.management.user.model.Alluser implements UserDetails {	
 	
 	private static final long serialVersionUID = 1L;
-	private List<String> userRoles;
-	
+	//private List<String> userRoles;
+	private String userRoles;
 
-	public CustomUserDetails(Alluser user,List<String> userRoles){
+	public CustomUserDetails(Alluser user, String userRoles){
+		super(user);
+		this.userRoles=userRoles;
+	}
+	
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		//String roles=StringUtils.collectionToCommaDelimitedString(userRoles);			
+		return AuthorityUtils.commaSeparatedStringToAuthorityList(userRoles);
+	}
+
+	/*public CustomUserDetails(Alluser user,List<String> userRoles){
 		super(user);
 		this.userRoles=userRoles;
 	}
@@ -27,8 +40,8 @@ public class CustomUserDetails extends com.all.management.user.model.Alluser imp
 		
 		String roles=StringUtils.collectionToCommaDelimitedString(userRoles);			
 		return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
-	}
-
+	}*/
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub

@@ -6,6 +6,7 @@ import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
 import com.all.management.user.model.Alluser;
 import com.all.management.user.repository.AlluserRepository;
 import com.all.management.user.service.api.AlluserService;
+import com.all.management.user.util.UserCreateEditValidator;
 import com.all.management.user.web.reports.ExportingErrorException;
 import com.all.management.user.web.reports.JasperReportsCsvExporter;
 import com.all.management.user.web.reports.JasperReportsExporter;
@@ -23,6 +24,7 @@ import io.springlets.web.mvc.util.MethodLinkBuilderFactory;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
@@ -305,6 +307,9 @@ public class AllusersCollectionThymeleafController {
      */
     @PostMapping(name = "create")
     public ModelAndView create(@Valid @ModelAttribute Alluser alluser, BindingResult result, Model model) {
+    	UserCreateEditValidator userValidator = new UserCreateEditValidator(alluserRepository);
+        userValidator.validate(alluser, result);
+        
         if (result.hasErrors()) {
             populateForm(model);
             
@@ -314,6 +319,7 @@ public class AllusersCollectionThymeleafController {
         String encodedPassword = passwordEncoder.encode(alluser.getPasswordHash());
         alluser.setPasswordHash(encodedPassword);
         
+        alluser.setLastUpdateDate(GregorianCalendar.getInstance());
         Alluser newAlluser = getAlluserService().save(alluser);
         UriComponents showURI = getItemLink().to(AllusersItemThymeleafLinkFactory.SHOW).with("alluser", newAlluser.getId()).toUri();
         return new ModelAndView("redirect:" + showURI.toUriString());

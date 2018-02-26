@@ -185,6 +185,10 @@ public class AlluserServiceImpl implements AlluserService {
         return getAlluserRepositoryCustom().findAllByIdsIn(ids, globalSearch, pageable);
     }
 
+    /*public List<Alluser> findByLoginIdOrEmailNotId(Long id, String LoginId, String email) {
+    	return getAlluserRepositoryCustom().findByLoginIdOrEmailNotId(id, LoginId, email);
+    }*/
+    
 	/**
      * TODO Auto-generated method documentation
      * 

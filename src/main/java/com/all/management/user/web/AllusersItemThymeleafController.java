@@ -3,12 +3,19 @@ package com.all.management.user.web;
 import com.all.management.user.model.Alluser;
 import com.all.management.user.repository.AlluserRepository;
 import com.all.management.user.service.api.AlluserService;
+import com.all.management.user.util.UserChgpwdValidator;
+import com.all.management.user.util.UserCreateEditValidator;
+
 import io.springlets.web.NotFoundException;
 import io.springlets.web.mvc.util.ControllerMethodLinkBuilderFactory;
 import io.springlets.web.mvc.util.MethodLinkBuilderFactory;
+
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -31,6 +38,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,6 +57,8 @@ import org.springframework.web.util.UriComponents;
 @RooThymeleaf
 public class AllusersItemThymeleafController {
 
+	private static final Logger logger = LoggerFactory.getLogger(AllusersItemThymeleafController.class);
+	
 	@Autowired
 	private AlluserRepository alluserRepository;
 	
@@ -259,6 +269,15 @@ public class AllusersItemThymeleafController {
         return new ModelAndView("allusers/edit");
     }
 
+    @GetMapping(value = "/chgpwd-form", name = "chgpwdForm")
+    public ModelAndView chgpwdForm(@ModelAttribute Alluser alluser, Model model) {
+        populateForm(model);
+        
+        model.addAttribute("alluser", alluser);
+        //model.addAttribute("newpwd", new String(""));
+        return new ModelAndView("allusers/chgpwd");
+    }
+    
 	/**
      * TODO Auto-generated method documentation
      * 
@@ -272,6 +291,9 @@ public class AllusersItemThymeleafController {
     @PutMapping(name = "update")
     public ModelAndView update(@Valid @ModelAttribute Alluser alluser, BindingResult result, @RequestParam("version") Integer version, @RequestParam(value = "concurrency", required = false, defaultValue = "") String concurrencyControl, Model model) {
         // Check if provided form contain errors
+    	UserCreateEditValidator userValidator = new UserCreateEditValidator(alluserRepository);
+        userValidator.validate(alluser, result);
+    	
         if (result.hasErrors()) {
             populateForm(model);
             
@@ -293,9 +315,10 @@ public class AllusersItemThymeleafController {
             // Update the version field to be able to override the existing values
             alluser.setVersion(existingAlluser.getVersion());
         }
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        /*PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(alluser.getPasswordHash());
-        alluser.setPasswordHash(encodedPassword);
+        alluser.setPasswordHash(encodedPassword);*/
+        alluser.setLastUpdateDate(GregorianCalendar.getInstance());
         Alluser savedAlluser = getAlluserService().save(alluser);
         UriComponents showURI = getItemLink().to(AllusersItemThymeleafLinkFactory.SHOW).with("alluser", savedAlluser.getId()).toUri();
         return new ModelAndView("redirect:" + showURI.toUriString());
@@ -314,4 +337,39 @@ public class AllusersItemThymeleafController {
         return ResponseEntity.ok().build();
     }
     
+    @PutMapping(value = "/chgpwd", name = "chgpwd")
+    public ModelAndView chgpwd(@Valid @ModelAttribute Alluser alluser, BindingResult result, @RequestParam("version") Integer version, @RequestParam(value = "concurrency", required = false, defaultValue = "") String concurrencyControl, Model model) {
+        // Check if provided form contain errors
+    	UserChgpwdValidator userValidator = new UserChgpwdValidator();
+        userValidator.validate(alluser, result);
+    	
+        if (result.hasErrors()) {
+            populateForm(model);
+            
+            return new ModelAndView("allusers/chgpwd");
+        }
+        // Concurrency control
+        Alluser existingAlluser = getAlluserService().findOne(alluser.getId());
+        if(alluser.getVersion() != existingAlluser.getVersion() && StringUtils.isEmpty(concurrencyControl)){
+            populateForm(model);
+            model.addAttribute("alluser", alluser);
+            model.addAttribute("concurrency", true);
+            return new ModelAndView("allusers/chgpwd");
+        } else if(alluser.getVersion() != existingAlluser.getVersion() && "discard".equals(concurrencyControl)){
+            populateForm(model);
+            model.addAttribute("alluser", existingAlluser);
+            model.addAttribute("concurrency", false);
+            return new ModelAndView("allusers/chgpwd");
+        } else if(alluser.getVersion() != existingAlluser.getVersion() && "apply".equals(concurrencyControl)){
+            // Update the version field to be able to override the existing values
+            alluser.setVersion(existingAlluser.getVersion());
+        }
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(alluser.getNewpwd());
+        alluser.setPasswordHash(encodedPassword);
+        alluser.setLastUpdateDate(GregorianCalendar.getInstance());
+        Alluser savedAlluser = getAlluserService().save(alluser);
+        UriComponents showURI = getItemLink().to(AllusersItemThymeleafLinkFactory.SHOW).with("alluser", savedAlluser.getId()).toUri();
+        return new ModelAndView("redirect:" + showURI.toUriString());
+    }
 }

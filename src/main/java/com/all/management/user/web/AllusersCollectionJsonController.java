@@ -8,6 +8,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,6 +50,8 @@ public class AllusersCollectionJsonController {
 	//@Autowired
 	//private PasswordEncoder passwordEncoder;
 
+	private static final Logger logger = LoggerFactory.getLogger(AllusersCollectionJsonController.class);
+	
 	private AlluserRepository alluserRepository;
 	
 	/**
@@ -198,17 +203,33 @@ public class AllusersCollectionJsonController {
             
             Alluser alluserupdate= alluserRepository.findOne(alluser.getId());
             if(alluserupdate != null) {
-	            alluserupdate.setLoginId(alluser.getLoginId());
-	            alluserupdate.setEmail(alluser.getEmail());
-	            alluserupdate.setLastUpdateDate(GregorianCalendar.getInstance());
-	            if (alluserRepository.save(alluserupdate) == null) {
-	                return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
-	            }
+            	List<Alluser> result = 
+            			alluserRepository.findByLoginIdOrEmailNotId(alluser.getId(), alluser.getLoginId(), alluser.getEmail());
+            	//make sure the logid and email is not used by other users
+            	if (result == null || result.isEmpty()) {
+                	alluserupdate.setLoginId(alluser.getLoginId());
+    	            alluserupdate.setEmail(alluser.getEmail());
+    	            alluserupdate.setLastUpdateDate(GregorianCalendar.getInstance());
+    	            if (alluserRepository.save(alluserupdate) == null) {
+    	                return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+    	            }
+                }
+                else if (result.size() == 1){
+                	// The loginId or email has been used
+                	return new ResponseEntity<String>(result.get(0).toJson(), headers, HttpStatus.FOUND);
+                }
+                else {
+                	// too many duplicated users
+                	return new ResponseEntity<String>(headers, HttpStatus.MULTI_STATUS);
+                }
+            	
+	            
             }
             else
             	return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
             return new ResponseEntity<String>(headers, HttpStatus.OK);
         } catch (Exception e) {
+        	logger.error("An exception error occured: ", e);
             return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -235,6 +256,7 @@ public class AllusersCollectionJsonController {
             	return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
             return new ResponseEntity<String>(headers, HttpStatus.OK);
         } catch (Exception e) {
+        	logger.error("An exception error occured: ", e);
             return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -245,7 +267,8 @@ public class AllusersCollectionJsonController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
         try {
-        	List<Alluser> result = alluserRepository.findByLoginIdIgnoreCase(loginId);
+        	//List<Alluser> result = alluserRepository.findByLoginIdIgnoreCase(loginId);
+        	List<Alluser> result = alluserRepository.findUserByLoginOrEmail(loginId);
             if (result == null || result.isEmpty()) {
                 return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
             }
@@ -254,7 +277,7 @@ public class AllusersCollectionJsonController {
             	return new ResponseEntity<String>(alluser.toJson(), headers, HttpStatus.OK);
             }
         } catch (Exception e) {
-        	e.printStackTrace();
+        	logger.error("An exception error occured: ", e);
             return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -285,8 +308,27 @@ public class AllusersCollectionJsonController {
             	return new ResponseEntity<String>(headers, HttpStatus.MULTI_STATUS);
             }
         } catch (Exception e) {
-        	e.printStackTrace();
+        	logger.error("An exception error occured: ", e);
         	
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @RequestMapping(value = "/extId/{extId}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> retrieveUserByIdJson(@PathVariable("extId") String extId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        try {
+        	Alluser result = alluserService.findOne(Long.valueOf(extId));
+            if (result == null) {
+            	return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+            }
+            else {
+            	return new ResponseEntity<String>(result.toJson(), headers, HttpStatus.OK);
+            }
+        } catch (Exception e) {
+        	logger.error("An exception error occured: ", e);
             return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

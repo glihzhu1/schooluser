@@ -21,6 +21,9 @@ import java.util.Calendar;
 import java.util.Objects;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.Email;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import flexjson.JSONDeserializer;
@@ -80,6 +83,7 @@ public class Alluser implements Serializable {
      *
      */
     @NotNull
+    @Email
     @Column(name = "email")
     @Size(max = 200)
     private String email;
@@ -90,7 +94,7 @@ public class Alluser implements Serializable {
      */
     @NotNull
     @Column(name = "app_role")
-    @Size(max = 50)
+    @Size(max = 200)
     private String appRole;
 
     /**
@@ -109,6 +113,11 @@ public class Alluser implements Serializable {
     @DateTimeFormat(pattern = "MM-dd-yyyy")
     private Calendar lastUpdateDate;
 
+    @Transient
+	String newpwd;
+    
+    @Transient
+	String cfmpwd;
     
 	public Alluser() {
 		super();
@@ -324,6 +333,22 @@ public class Alluser implements Serializable {
     public void setLastUpdateDate(Calendar lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
+
+	public String getNewpwd() {
+		return newpwd;
+	}
+
+	public void setNewpwd(String newpwd) {
+		this.newpwd = newpwd;
+	}
+
+	public String getCfmpwd() {
+		return cfmpwd;
+	}
+
+	public void setCfmpwd(String cfmpwd) {
+		this.cfmpwd = cfmpwd;
+	}
 
 	/**
      * TODO Auto-generated attribute documentation

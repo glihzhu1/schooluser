@@ -32,7 +32,11 @@ public class AllusersItemThymeleafLinkFactory implements MethodLinkFactory<Allus
      * 
      */
     public static final String EDITFORM = "editForm";
+    
+    public static final String CHGPWDFORM = "chgpwdForm";
 
+    public static final String CHGPWD = "chgpwd";
+    
 	/**
      * TODO Auto-generated attribute documentation
      * 
@@ -74,6 +78,12 @@ public class AllusersItemThymeleafLinkFactory implements MethodLinkFactory<Allus
         }
         if (methodName.equals(UPDATE)) {
             return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).update(null, null, null, null, null)).buildAndExpand(pathVariables);
+        }
+        if (methodName.equals(CHGPWDFORM)) {
+            return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).chgpwdForm(null, null)).buildAndExpand(pathVariables);
+        }
+        if (methodName.equals(CHGPWD)) {
+            return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).chgpwd(null, null, null, null, null)).buildAndExpand(pathVariables);
         }
         if (methodName.equals(DELETE)) {
             return SpringletsMvcUriComponentsBuilder.fromMethodCall(SpringletsMvcUriComponentsBuilder.on(getControllerClass()).delete(null)).buildAndExpand(pathVariables);

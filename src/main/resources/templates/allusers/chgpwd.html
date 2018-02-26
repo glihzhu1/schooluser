@@ -3,7 +3,7 @@
   <head id="head">
 
     <title data-th-text="#{label_edit_entity(#{label_alluser})}">
-    Edit Alluser - Spring Roo application</title>
+    Change user password - Spring Roo application</title>
 
     <!-- DateTimePicker -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/2.5.4/build/jquery.datetimepicker.min.css}" />
@@ -31,7 +31,7 @@
           <h1 data-th-text="#{label_edit_entity(#{label_alluser})}">Edit Alluser</h1>
 
           <!-- FORM -->
-          <form class="form-horizontal validate" method="POST" data-th-object="${alluser}" data-th-action="${itemLink.to('update').with('alluser', alluser.id)}">
+          <form class="form-horizontal validate" method="POST" data-th-object="${alluser}" data-th-action="${itemLink.to('chgpwd').with('alluser', alluser.id)}">
             <input type="hidden" name="_method" value="PUT" />
             	<input type="hidden" name="version" data-th-value="*{version}" />
             <!-- CONCURRENCY CONTROL -->
@@ -63,41 +63,22 @@
       <span id="loginId-error" class="help-block" data-th-if="${#fields.hasErrors('loginId')}" data-th-errors="*{loginId}">Error message.</span>
   </div>
 </div>
-<div class="form-group has-error has-feedback" data-z="2b09483d" id="alluser-email-field" data-th-classappend="${#fields.hasErrors('email')}? 'has-error has-feedback'" data-th-class="form-group">
-  <label for="email" class="col-md-3 control-label" data-th-text="#{label_alluser_email}">email</label>
+<div class="form-group has-error has-feedback" data-z="2f620241" id="alluser-newpwd-field" data-th-classappend="${#fields.hasErrors('newpwd')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="newpwd" class="col-md-3 control-label" data-th-text="#{label_alluser_newpwd}">New Password</label>
   <div class="col-md-6">
-    <input id="email" name="email" data-th-value="*{{email}}" type="text" class="form-control" placeholder="email" data-th-placeholder="#{label_alluser_email}" data-toggle="tooltip" aria-describedby="emailStatus" required="required" maxlength="200" size="200" />
-      <span data-th-classappend="${#fields.hasErrors('email')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('email')}" aria-hidden="true"></span>
-      <span id="email-error" class="help-block" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}">Error message.</span>
+    <input id="newpwd" name="newpwd" data-th-value="*{{newpwd}}" type="text" class="form-control" placeholder="New Password" data-th-placeholder="#{label_alluser_newpwd}" data-toggle="tooltip" aria-describedby="newpwdStatus" required="required" maxlength="200" size="200" />
+      <span data-th-classappend="${#fields.hasErrors('newpwd')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('newpwd')}" aria-hidden="true"></span>
+      <span id="newpwd-error" class="help-block" data-th-if="${#fields.hasErrors('newpwd')}" data-th-errors="*{newpwd}">Error message.</span>
   </div>
 </div>
-<div class="form-group has-error has-feedback" data-z="7e98f17d" id="alluser-approle-field" data-th-classappend="${#fields.hasErrors('appRole')}? 'has-error has-feedback'" data-th-class="form-group">
-  <label for="appRole" class="col-md-3 control-label" data-th-text="#{label_alluser_approle}">appRole</label>
+<div class="form-group has-error has-feedback" data-z="2b09483d" id="alluser-cfmpwd-field" data-th-classappend="${#fields.hasErrors('cfmpwd')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="cfmpwd" class="col-md-3 control-label" data-th-text="#{label_alluser_cfmpwd}">Confirm Password</label>
   <div class="col-md-6">
-    <input id="appRole" name="appRole" data-th-value="*{{appRole}}" type="text" class="form-control" placeholder="appRole" data-th-placeholder="#{label_alluser_approle}" data-toggle="tooltip" aria-describedby="appRoleStatus" required="required" maxlength="50" size="50" />
-      <span data-th-classappend="${#fields.hasErrors('appRole')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('appRole')}" aria-hidden="true"></span>
-      <span id="appRole-error" class="help-block" data-th-if="${#fields.hasErrors('appRole')}" data-th-errors="*{appRole}">Error message.</span>
+    <input id="cfmpwd" name="cfmpwd" data-th-value="*{{cfmpwd}}" type="text" class="form-control" placeholder="Confirm Password" data-th-placeholder="#{label_alluser_cfmpwd}" data-toggle="tooltip" aria-describedby="cfmpwdStatus" required="required" maxlength="200" size="200" />
+      <span data-th-classappend="${#fields.hasErrors('cfmpwd')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('cfmpwd')}" aria-hidden="true"></span>
+      <span id="cfmpwd-error" class="help-block" data-th-if="${#fields.hasErrors('cfmpwd')}" data-th-errors="*{cfmpwd}">Error message.</span>
   </div>
 </div>
-<div class="form-group has-error has-feedback" id="alluser-useractive-field" data-z="3b225dc1" data-th-classappend="${#fields.hasErrors('userActive')}? 'has-error has-feedback'" data-th-class="form-group">
-  <label class="col-md-3 control-label" for="userActive" data-th-text="#{label_alluser_useractive}">userActive</label>
-  <div class="col-md-6">
-    <div class="checkbox">
-      <input type="checkbox" data-th-field="*{userActive}" data-th-title="#{label_requiredfield}" data-toggle="tooltip" />
-       <span data-th-classappend="${#fields.hasErrors('userActive')}? 'form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('userActive')}" aria-hidden="true"></span>
-        <span id="userActive-error" class="help-block" data-th-if="${#fields.hasErrors('userActive')}" data-th-errors="*{userActive}">Error message.</span>
-    </div>
-  </div>
-</div>
-<!--  
-<div class="form-group has-error has-feedback" id="alluser-lastupdatedate-field" data-z="b2051961" data-th-classappend="${#fields.hasErrors('lastUpdateDate')}? 'has-error has-feedback'" data-th-class="form-group">
-  <label for="lastUpdateDate" class="col-md-3 control-label" data-th-text="#{label_alluser_lastupdatedate}">lastUpdateDate</label>
-  <div class="col-md-3">
-    <input id="lastUpdateDate" name="lastUpdateDate" data-th-value="*{{lastUpdateDate}}" type="text" class="form-control datetimepicker" placeholder="lastUpdateDate" data-th-placeholder="#{label_alluser_lastupdatedate}" data-th-attr="data-dateformat=${lastUpdateDate_date_format}" data-toggle="tooltip" /> <span data-th-classappend="${#fields.hasErrors('lastUpdateDate')}? 'glyphicon glyphicon-remove form-control-feedback'" data-th-if="${#fields.hasErrors('lastUpdateDate')}" aria-hidden="true"></span>
-     <span id="lastUpdateDate-error" class="help-block" data-th-if="${#fields.hasErrors('lastUpdateDate')}" data-th-errors="*{lastUpdateDate}">Error message.</span>
-  </div>
-</div>
--->
              </fieldset>
 
 

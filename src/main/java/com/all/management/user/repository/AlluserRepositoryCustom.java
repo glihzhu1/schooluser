@@ -32,5 +32,7 @@ public interface AlluserRepositoryCustom {
      * @return Page
      */
     public abstract Page<Alluser> findAllByIdsIn(List<Long> ids, GlobalSearch globalSearch, Pageable pageable);
+    
+    //public abstract List<Alluser> findByLoginIdOrEmailNotId(Long id, String LoginId, String email);
 
 }
