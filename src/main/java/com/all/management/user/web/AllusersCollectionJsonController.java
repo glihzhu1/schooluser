@@ -261,6 +261,47 @@ public class AllusersCollectionJsonController {
         }
     }
     
+    @RequestMapping(value = "/emailloginid/{email}/{loginId}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> retrieveUserByEmailAndLoginIdJson(@PathVariable("email") String email, @PathVariable("loginId") String loginId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        try {
+        	List<Alluser> result = alluserRepository.findByLoginIdAndEmailIgnoreCase(loginId, email);
+            if (result == null || result.isEmpty()) {
+                return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+            }
+            else {
+            	Alluser alluser = result.get(0);
+            	return new ResponseEntity<String>(alluser.toJson(), headers, HttpStatus.OK);
+            }
+        } catch (Exception e) {
+        	logger.error("An exception error occured: ", e);
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @RequestMapping(value = "/email/{email}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> retrieveUserByEmailJson(@PathVariable("email") String email) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        try {
+        	//List<Alluser> result = alluserRepository.findByLoginIdIgnoreCase(loginId);
+        	List<Alluser> result = alluserRepository.findByEmailIgnoreCase(email);
+            if (result == null || result.isEmpty()) {
+                return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+            }
+            else {
+            	Alluser alluser = result.get(0);
+            	return new ResponseEntity<String>(alluser.toJson(), headers, HttpStatus.OK);
+            }
+        } catch (Exception e) {
+        	logger.error("An exception error occured: ", e);
+            return new ResponseEntity<String>("{\"ERROR\":"+e.getMessage()+"\"}", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
     @RequestMapping(value = "/loginId/{loginId}", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<String> retrieveUserByloginIdJson(@PathVariable("loginId") String loginId) {

@@ -21,6 +21,7 @@ public interface AlluserRepository extends DetachableJpaRepository<Alluser, Long
 	public List<Alluser> findByEmailIgnoreCase(String email);
 	public List<Alluser> findByLoginIdAndEmailIgnoreCase(String LoginId, String email);
 	public List<Alluser> findByLoginIdOrEmailIgnoreCase(String LoginId, String email);
+	//public List<Alluser> findByUserActiveAndEmail(boolean userActive, String email);
 	
 	//this method to support login thru both loginid and email
 	@Query("SELECT alluser FROM Alluser alluser"
