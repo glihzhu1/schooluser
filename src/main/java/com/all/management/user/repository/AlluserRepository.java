@@ -35,6 +35,13 @@ public interface AlluserRepository extends DetachableJpaRepository<Alluser, Long
 			+ " or alluser.email = :email )")
 	public List<Alluser> findByLoginIdOrEmailNotId(@Param("id") Long id, @Param("loginId") String loginId, @Param("email") String email);
 
+	/*@Query("SELECT alluser FROM Alluser alluser"
+			+ " WHERE alluser.id != :id"
+			+ " alluser.appRole != :role"
+			+ " and ( alluser.loginId = :loginId"
+			+ " or alluser.email = :email )")
+	public List<Alluser> findByLoginIdOrEmailNotIdAndRole(@Param("id") Long id, @Param("role") String role, @Param("loginId") String loginId, @Param("email") String email);
+*/
 	@Query("SELECT alluser FROM Alluser alluser"
 			+ " WHERE alluser.id != :id"
 			+ " and alluser.loginId = :loginId")

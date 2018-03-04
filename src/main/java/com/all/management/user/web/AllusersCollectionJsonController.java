@@ -211,11 +211,21 @@ public class AllusersCollectionJsonController {
     	            alluserupdate.setEmail(alluser.getEmail());
     	            alluserupdate.setLastUpdateDate(GregorianCalendar.getInstance());
     	            if (alluserRepository.save(alluserupdate) == null) {
-    	                return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+    	                return new ResponseEntity<String>(headers, HttpStatus.OK);
     	            }
                 }
-                else if (result.size() == 1){
-                	// The loginId or email has been used
+            	else if (result.size() == 1 
+                    && !result.get(0).getAppRole().equals(alluser.getAppRole())){
+            		//alluserupdate.setLoginId(alluser.getLoginId());
+    	            alluserupdate.setEmail(alluser.getEmail());
+    	            alluserupdate.setLastUpdateDate(GregorianCalendar.getInstance());
+    	            if (alluserRepository.save(alluserupdate) == null) {
+    	                return new ResponseEntity<String>(headers, HttpStatus.OK);
+    	            }
+                }
+                else if (result.size() == 1 
+                	&& result.get(0).getAppRole().equals(alluser.getAppRole())){
+                	// The loginId or email has been used by another user with the same role
                 	return new ResponseEntity<String>(result.get(0).toJson(), headers, HttpStatus.FOUND);
                 }
                 else {
